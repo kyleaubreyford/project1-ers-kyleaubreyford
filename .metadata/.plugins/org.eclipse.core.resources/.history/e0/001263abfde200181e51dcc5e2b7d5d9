@@ -1,0 +1,19 @@
+package com.revature.services;
+
+import java.util.List;
+
+import javax.servlet.http.HttpSession;
+
+import com.revature.dto.Credential;
+import com.revature.model.User;
+
+public interface UserService {
+	UserService currentImplementation = new UserServiceImpl();
+
+	User findById(int id);
+
+	List<User> findAll();
+
+	boolean login(Credential cred, HttpSession httpSession);
+
+}

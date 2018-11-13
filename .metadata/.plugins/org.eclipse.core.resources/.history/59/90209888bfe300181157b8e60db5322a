@@ -1,0 +1,17 @@
+package com.revature.dao;
+
+import java.util.List;
+
+import com.revature.models.User;
+
+public interface UserDao {
+	UserDao currentImplementation = new UserDaoJdbc();
+
+	User findById(int id);
+
+	List<User> findAll();
+
+	User findByUsernameAndPassword(String username, String password);
+
+	User findByUsername(String username);
+}

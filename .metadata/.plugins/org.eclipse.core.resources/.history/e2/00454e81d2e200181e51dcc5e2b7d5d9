@@ -1,0 +1,11 @@
+package com.revature.dao;
+
+public class UserDao {
+	UserDao currentImplementation = new UserDaoJdbc();
+
+	AppUser findById(int id);
+
+	List<AppUser> findAll();
+
+	AppUser findByUsernameAndPassword(String username, String password);
+}

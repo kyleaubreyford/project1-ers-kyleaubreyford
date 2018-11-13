@@ -1,0 +1,62 @@
+package com.revature.services;
+
+import java.util.List;
+
+import com.revature.dao.ReimbursementDao;
+import com.revature.dao.UserDao;
+import com.revature.dto.ReimbursementTable;
+import com.revature.models.Reimbursement;
+
+public class ReimbursementServiceImpl implements ReimbursementService {
+
+	private ReimbursementDao rd = ReimbursementDao.currentImplementation;
+	private UserDao ud = UserDao.currentImplementation;
+	
+	@Override
+	public List<Reimbursement> findByUserId(int id) {
+		return rd.findByUserId(id);
+	}
+
+	@Override
+	public boolean saveReimbursement(Reimbursement r) {
+		return rd.saveReimbursement(r);
+	}
+
+	@Override
+	public List<Reimbursement> findAll() {
+		return rd.findAll();
+	}
+
+	@Override
+	public List<Reimbursement> findByStatusType(int status) {
+		return rd.findByStatusType(status);
+	}
+
+	@Override
+	public boolean updateStatus(int id) {
+		return rd.updateStatus(id);
+	}
+
+	@Override
+	public List<ReimbursementTable> tableFindByUserId(int id) {
+		return rd.tableFindByUserId(id);
+	}
+
+	@Override
+	public List<ReimbursementTable> tableFindAll() {
+		// TODO Auto-generated method stub
+		return rd.tableFindAll();
+	}
+
+	@Override
+	public List<ReimbursementTable> tableFindByStatusType(int status) {
+		return rd.tableFindByStatusType(status);
+	}
+
+	@Override
+	public boolean approveReimbursement(int index,String approver) {
+		return rd.approveReimbursement(index,approver);
+		
+	}
+
+}

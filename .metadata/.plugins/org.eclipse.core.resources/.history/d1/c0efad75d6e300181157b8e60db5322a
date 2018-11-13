@@ -1,0 +1,24 @@
+package com.revature.services;
+
+import java.util.List;
+
+import com.revature.dao.ReimbursementDao;
+import com.revature.dao.ReimbursementJdbc;
+import com.revature.models.Reimbursement;
+
+public interface ReimbursementService {
+		ReimbursementService currentImplementation = new ReimbursementServiceImpl();
+
+		UserService currentImplementation = new UserServiceImpl();
+		//Employee Methods
+		List<Reimbursement> findByUserId(int id);
+		boolean saveReimbursement(Reimbursement r);
+		
+		
+		
+		//Admin Methods
+		List<Reimbursement> findAll();
+		List<Reimbursement> findByStatusType(int status);
+		boolean updateStatus(int id);
+
+}

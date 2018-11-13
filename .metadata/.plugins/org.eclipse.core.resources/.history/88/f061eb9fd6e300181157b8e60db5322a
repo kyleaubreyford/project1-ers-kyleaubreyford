@@ -1,0 +1,43 @@
+package com.revature.services;
+
+import java.util.List;
+
+import com.revature.dao.ReimbursementDao;
+import com.revature.dao.UserDao;
+import com.revature.models.Reimbursement;
+
+public class ReimbursementServiceImpl implements ReimbursementService {
+
+	private ReimbursementDao rd = ReimbursementDao.currentImplementation;
+	
+	@Override
+	public List<Reimbursement> findByUserId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean saveReimbursement(Reimbursement r) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Reimbursement> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Reimbursement> findByStatusType(int status) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateStatus(int id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

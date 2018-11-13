@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.apache.log4j.Logger"/>
+<fullyQualifiedTypeName name="com.revature.models.Role"/>
+<fullyQualifiedTypeName name="com.revature.models.User"/>
+<fullyQualifiedTypeName name="com.revature.dto.UserBasics"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="com.revature.dao.ReimbursementDao"/>
+<fullyQualifiedTypeName name="com.revature.services.ReimbursementService"/>
+<fullyQualifiedTypeName name="com.revature.dto.ReimbursementBasics"/>
+<fullyQualifiedTypeName name="com.revature.services.UserService"/>
+<fullyQualifiedTypeName name="org.apache.tomcat.util.bcel.Const"/>
+<fullyQualifiedTypeName name="com.revature.models.Reimbursement"/>
+<fullyQualifiedTypeName name="com.revature.dto.ReimbursementTable"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.parser.RecoveredType"/>
+<fullyQualifiedTypeName name="javax.print.attribute.standard.PrinterLocation"/>
+<fullyQualifiedTypeName name="javax.servlet.jsp.tagext.TryCatchFinally"/>
+<fullyQualifiedTypeName name="com.fasterxml.jackson.core.type.TypeReference"/>
+<fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.ForEach"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="java.sql.Timestamp"/>
+<fullyQualifiedTypeName name="com.revature.dao.UserDao"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="javax.websocket.Session"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="java.io.Console"/>
+<fullyQualifiedTypeName name="javax.swing.DebugGraphics"/>
+<fullyQualifiedTypeName name="org.apache.juli.logging.Log"/>
+<fullyQualifiedTypeName name="org.apache.log4j.spi.RootLogger"/>
+</qualifiedTypeNameHistroy>

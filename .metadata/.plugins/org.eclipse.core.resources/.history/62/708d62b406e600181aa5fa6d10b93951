@@ -1,0 +1,18 @@
+package com.revature.utils;
+
+import java.io.Console;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class ResponseMapper {
+	private static ObjectMapper om = new ObjectMapper();
+
+	public static void convertAndAttach(Object o, HttpServletResponse resp) throws IOException {
+		String json = om.writeValueAsString(o);
+		System.out.println(json + "hi");
+		resp.getWriter().write(json);
+	}
+}

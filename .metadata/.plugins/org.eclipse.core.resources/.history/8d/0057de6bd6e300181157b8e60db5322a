@@ -1,0 +1,18 @@
+package com.revature.services;
+
+public interface ReimbursementService {
+		ReimbursementDao currentImplementation = new ReimbursementJdbc();
+
+		
+		//Employee Methods
+		List<Reimbursement> findByUserId(int id);
+		boolean saveReimbursement(Reimbursement r);
+		
+		
+		
+		//Admin Methods
+		List<Reimbursement> findAll();
+		List<Reimbursement> findByStatusType(int status);
+		boolean updateStatus(int id);
+
+}

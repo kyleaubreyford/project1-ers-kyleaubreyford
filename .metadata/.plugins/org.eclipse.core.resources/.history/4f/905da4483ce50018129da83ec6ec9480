@@ -1,0 +1,10 @@
+package com.revature.dto;
+
+public class ReimbursementBasics {
+
+	private int amount;
+	private String description;
+	private String receipt;
+	private String type;
+	
+}

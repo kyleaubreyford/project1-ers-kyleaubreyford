@@ -1,0 +1,109 @@
+package com.revature.controllers;
+
+import java.io.Console;
+import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+import org.apache.log4j.Logger;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.dto.ReimbursementBasics;
+import com.revature.dto.ReimbursementTable;
+import com.revature.dto.UserBasics;
+import com.revature.models.Reimbursement;
+import com.revature.models.User;
+import com.revature.services.ReimbursementService;
+import com.revature.services.UserService;
+import com.revature.utils.ResponseMapper;
+
+public class ReimbursementController {
+	private Logger log = Logger.getRootLogger();
+	private ReimbursementService rs = ReimbursementService.currentImplementation;
+	private UserService us = UserService.currentImplementation;
+	private ObjectMapper om = new ObjectMapper();
+
+	void process(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		String method = req.getMethod();
+		switch (method) {
+		case "GET":
+			processGet(req, resp);
+			break;
+		case "POST":
+			processPost(req, resp);
+			break;
+		case "OPTIONS":
+			return;
+		default:
+			resp.setStatus(404);
+			break;
+		}
+	}
+
+	private void processGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		String uri = req.getRequestURI();
+		String context = "Project1";
+		uri = uri.substring(context.length() + 2, uri.length());
+		System.out.println(uri);
+		if ("admin".equals(uri)) {
+			String un = (String) req.getSession().getAttribute("username");
+			System.out.println(un);
+			log.info("Finding all Reimbursements for ADMIN");
+			List<ReimbursementTable> reimbursements = rs.tableFindAll();
+			ResponseMapper.convertAndAttach(reimbursements, resp);
+		} else if ("home".equals(uri)) {
+			log.info("Finding all Reimbursements for User");
+			String un = (String) req.getSession().getAttribute("username");
+			System.out.println(un);
+			final UserService us = UserService.currentImplementation;
+			List<ReimbursementTable> reimbursements = rs.tableFindByUserId(us.findByUsername(un).getId());
+			ResponseMapper.convertAndAttach(reimbursements, resp);
+		}
+	}
+
+	private void processPost(HttpServletRequest req, HttpServletResponse resp)
+			throws JsonParseException, JsonMappingException, IOException {
+		log.info("Attempting to create Reimbursement");
+		String un = (String) req.getSession().getAttribute("username");
+		
+		String uri = req.getRequestURI();
+		String context = "Project1";
+		uri = uri.substring(context.length() + 2, uri.length());
+		
+		//put check here.
+		
+		
+		if ("home/createReimbursement".equals(uri)) {
+			
+			ReimbursementBasics reimbursementB = om.readValue(req.getReader(), ReimbursementBasics.class);
+			Reimbursement r = new Reimbursement(reimbursementB, us.findByUsername(un).getId());
+			if (rs.saveReimbursement(r)) {
+				resp.setStatus(201);
+				return;
+			} else {
+				System.out.println("User could not be inserted.");
+				resp.setStatus(409);
+			}
+		}else if ("admin/approve".equals(uri)) {
+			int[] myObjects = om.readValue(req.getReader(), int[].class);
+			System.out.println(myObjects[0]);
+			//List<Integer> indexes = om.readValue(req.getReader(), new TypeReference<List<Integer>>() {});
+			//indexes.forEach(index->rs.approveReimbursement(index,un));
+			try {
+				//List<Integer> indexes = om.readValue(req.getReader(), new TypeReference<List<Integer>>() {});
+				//indexes.forEach(index->rs.approveReimbursement(index,un));
+				resp.setStatus(201);
+			}catch (NullPointerException e){
+				resp.setStatus(204);
+				log.debug("No List Found Containing Indexes");
+			}
+
+		}
+	}
+}

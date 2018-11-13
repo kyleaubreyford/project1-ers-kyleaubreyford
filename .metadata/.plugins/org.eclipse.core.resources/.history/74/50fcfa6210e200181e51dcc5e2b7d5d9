@@ -1,0 +1,14 @@
+package com.revature.models;
+
+public class Reimbursement {
+	private int id;
+	private int amount;
+	private String submitted;
+	private String description;
+	private String resolved;
+	private String receipt;
+	private User author;
+	private User resolver;
+	private Status statusId;
+	private Type typeId;
+}
