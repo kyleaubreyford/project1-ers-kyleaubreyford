@@ -16,7 +16,8 @@ public class ConnectionUtil {
 	}
 	
 	public static Connection getConnection() throws SQLException {
-		if (String property = System.getProperty("db_property").equals("property")){
+		String property = System.getProperty("db_property");
+		if (property.equals("property")){
 			String url = System.getProperty("db_url");
 			String port = System.getProperty("db_port");
 			String dbName = System.getProperty("db_name");
