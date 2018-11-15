@@ -43,7 +43,7 @@ public class ReimbursementJdbc implements ReimbursementDao {
 		try {
 			resolved = rs.getTimestamp("resolved").toString();
 		}catch(NullPointerException e){
-			log.debug("Submitted timestamp not found");
+			//log.debug("Submitted timestamp not found");
 		}
 		return new ReimbursementTable(rs.getInt("id"),rs.getString("ausername"),rs.getInt("amount"),
 				rs.getString("description"),rs.getString("type"),submitted,rs.getString("receipt"),

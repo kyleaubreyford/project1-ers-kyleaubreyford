@@ -93,7 +93,7 @@ export class CreateUserComponent extends React.Component {
                         className="form-control"
                         placeholder="Username"
                         required
-                        maxlength="50"
+                        maxLength="50"
                         value={this.state.username}
                         onChange={this.usernameChange}
                     />
@@ -103,7 +103,7 @@ export class CreateUserComponent extends React.Component {
                         className="form-control"
                         placeholder="Password"
                         required
-                        maxlength="50"
+                        maxLength="50"
                         value={this.state.password}
                         onChange={this.passwordChange} />
 
@@ -113,7 +113,7 @@ export class CreateUserComponent extends React.Component {
                         className="form-control"
                         placeholder="First Name"
                         required
-                        maxlength="100"
+                        maxLength="100"
                         value={this.state.firstname}
                         onChange={this.firstnameChange}
                     />
@@ -124,7 +124,7 @@ export class CreateUserComponent extends React.Component {
                         className="form-control"
                         placeholder="Last Name"
                         required
-                        maxlength="100"
+                        maxLength="100"
                         value={this.state.lastname}
                         onChange={this.lastnameChange}
                     />
@@ -133,9 +133,9 @@ export class CreateUserComponent extends React.Component {
                     <input type="email"
                         id="input-email"
                         className="form-control"
-                        placeholder="Last Name"
+                        placeholder="Email"
                         required
-                        maxlength="150"
+                        maxLength="150"
                         value={this.state.email}
                         onChange={this.emailChange}
                     />

@@ -3,6 +3,7 @@ import { ReimbursementComponent } from './Reimbursement.component';
 import { FilterComponent } from './Filter.component';
 import { SignOffComponent } from './SignOff.component';
 import { LocationButtonComponent } from './LocationButton.component';
+import { AppNav } from './Nav.component';
 
 export class AdminComponent extends React.Component {
 
@@ -102,13 +103,16 @@ export class AdminComponent extends React.Component {
     console.log(obj);
     return (
       <>
+        <div className="mainNav flexBoxNav navbar navbar-toggleable-md navbar-expand-lg display-front nav-pad flexBoxNav">
+         <div className="welcomeDiv">Welcome {sessionStorage.getItem('username')}</div>
          <LocationButtonComponent history={this.props.history} name={'Create A Reimbursement'} redirectURL={'admin/addReimbursement'}/>
          <FilterComponent key={'All'} value={'All'} updateFilter={this.updateFilter.bind(this)}/>
          <FilterComponent key={'Completed'} value={'Completed'} updateFilter={this.updateFilter.bind(this)}/>
          <FilterComponent key={'Pending'} value={'Pending'} updateFilter={this.updateFilter.bind(this)}/>
          <SignOffComponent history={this.props.history}/>
-
-        <table className="table table-striped table-dark">
+      </div >
+      <div className ="tableHeader">Reimbursements
+        <table className="table table-striped tableStyle">
           <thead>
             <tr>
               <th></th>
@@ -134,6 +138,7 @@ export class AdminComponent extends React.Component {
             }
           </tbody>
         </table>
+        </div>
       </>
     )
   }

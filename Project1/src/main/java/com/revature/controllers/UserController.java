@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.io.IOException;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,6 +15,7 @@ import com.revature.dto.Credential;
 import com.revature.dto.UserBasics;
 import com.revature.models.User;
 import com.revature.services.UserService;
+import com.revature.utils.PasswordMD5Hash;
 import com.revature.utils.ResponseMapper;
 
 public class UserController {
@@ -46,9 +48,12 @@ public class UserController {
 		String uri = req.getRequestURI();
 		String context = "Project1";
 		uri = uri.substring(context.length() + 2, uri.length());
+		log.debug(uri);
 		if ("welcome/login".equals(uri)) {
-			log.info("Attempting to log in");
+			log.debug("Attempting to log in");
 			Credential cred = om.readValue(req.getReader(), Credential.class);
+			cred.setPassword(PasswordMD5Hash.hashPassword(cred.getPassword()));
+			log.debug(cred.getPassword());
 			if(!us.login(cred, req.getSession())) {
 				resp.setStatus(403);
 			}
@@ -63,8 +68,11 @@ public class UserController {
 		}else if ("welcome/create".equals(uri)) {
 			log.info("Attempting to create user");
 			UserBasics userB = om.readValue(req.getReader(), UserBasics.class);
+			userB.setPassword(PasswordMD5Hash.hashPassword(userB.getPassword()));
+			log.debug(userB.getPassword());
 		    User user = new User(userB);
 			if (us.saveUser(user)) {
+				
 				resp.setStatus(201);
 				return;
 			}else {

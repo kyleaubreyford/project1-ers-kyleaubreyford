@@ -4,7 +4,7 @@ export class SignOffComponent extends React.Component {
 
     render() {
         return(
-        <button className="btn btn-sm btn-dark"
+        <button className="btn btnStyle btn-dark"
             onClick={this.signOff}
             type='submit'>
             Sign Off
@@ -14,6 +14,21 @@ export class SignOffComponent extends React.Component {
 
 
     signOff = (e) => {
-        this.props.history.push('/welcome');
+        e.preventDefault();
+        fetch('http://localhost:8080/Project1/logout', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
+        })
+          .then(res => {
+            
+              sessionStorage.clear();
+              this.props.history.push('/welcome');
+          })
+          .catch(err => {
+            console.log(err);
+          })
     }
 }

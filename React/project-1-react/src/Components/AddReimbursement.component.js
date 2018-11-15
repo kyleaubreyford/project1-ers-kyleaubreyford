@@ -45,19 +45,20 @@ export class AddReimbursement extends React.Component {
 
     submit = (e) => {
         e.preventDefault();
-        let cred = this.state;
+        let reimbursementObject = this.state;
         fetch('http://localhost:8080/Project1/home/createReimbursement', {
+            credentials: 'include',
             method: 'POST',
-            body: JSON.stringify(cred),
+            body: JSON.stringify(reimbursementObject),
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include'
+            
         })
             .then(res => {
                 console.log(res.status)
                 if (res.status === 201) {
-                    this.props.history.push('/home');
+                    this.props.history.push(`/${this.props.redirectURL}`);
 
                 }
             })
@@ -102,8 +103,8 @@ export class AddReimbursement extends React.Component {
                         placeholder="Receipt"
                         required
                         maxLength="250"
-                        value={this.state.firstname}
-                        onChange={this.firstnameChange}
+                        value={this.state.receipt}
+                        onChange={this.receiptChange}
                     />
 
                     <label>Type: </label>

@@ -3,7 +3,7 @@ export class LocationButtonComponent extends React.Component {
 
     render() {
         return(
-        <button className="btn btn-sm btn-dark"
+        <button className="btn btn-dark btnStyle"
             onClick={()=> this.props.history.push('/'+this.props.redirectURL)}
             type='submit'>
             {this.props.name}

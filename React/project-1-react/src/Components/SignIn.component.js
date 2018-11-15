@@ -62,23 +62,27 @@ export class SignInComponent extends React.Component {
   render() {
     return (
       <>
+       <div className="text-center">
         <form className="form-signin" onSubmit={this.submit}>
           <h1 className="h3 mb-3 font-weight-normal">Please sign in to ERS</h1>
 
-          <label htmlFor="input-username" maxLength="50">Username</label>
+          <label htmlFor="input-username" maxLength="50" className="sr-only">Username</label>
           <input type="text"
             id="input-username"
             placeholder="Username"
             required
+            className="form-control"
+            autoFocus
             value={this.state.username}
             onChange={this.usernameChange}
           />
           <br></br>
-          <label htmlFor="inputPassword"  maxLength="50">Password</label>
+          <label htmlFor="inputPassword"  maxLength="50" className="sr-only inputSize" >Password</label>
           <input type="password"
             id="inputPassword"
             placeholder="Password"
             required
+            className="form-control"
             value={this.state.password}
             onChange={this.passwordChange} />
           <br></br>
@@ -91,7 +95,9 @@ export class SignInComponent extends React.Component {
           type="submit"
           onClick={this.createButton}>
           Create Account
+          
      </button>
+     </div>
       </>
     )
   }

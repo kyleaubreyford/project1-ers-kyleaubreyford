@@ -29,7 +29,7 @@ export class ReimbursementComponent extends React.PureComponent {
 
   render() {
     return (
-        <tr>
+        <tr className={(this.props.reimbursement.status === 'pending') ? 'pendingStyle': (this.props.reimbursement.status === 'approved') ? 'approveStyle': 'rejectStyle'}>
         <td>
            {this.renderButtons(this.props.reimbursement.status,this.props.reimbursement.id)}
         </td>

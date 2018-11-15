@@ -6,8 +6,7 @@ import { HomeComponent } from './Components/Home.component';
 import { CreateUserComponent } from './Components/CreateUser.component';
 import { AdminComponent } from './Components/Admin.component';
 import {AddReimbursement}  from './Components/AddReimbursement.component';
-import history from './Components/History.component.js'
-
+import {AppNav} from './Components/Nav.component.js';
 class App extends Component {
   render() {
     return (

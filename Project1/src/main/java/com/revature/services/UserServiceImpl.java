@@ -1,9 +1,9 @@
 package com.revature.services;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.spi.RootLogger;
 
 import com.revature.dao.UserDao;
 import com.revature.dto.Credential;
@@ -32,9 +32,16 @@ public class UserServiceImpl implements UserService {
 	public boolean login(Credential cred, HttpSession session) {
 		User u = ud.findByUsernameAndPassword(cred.getUsername(), cred.getPassword());
 		if (u != null) {
+			
+			
+			
 			session.setAttribute("username", u.getUsername());
 			session.setAttribute("role", u.getRoleId().getUserRole());
 			
+			
+			
+			session.setMaxInactiveInterval(30*60);
+			   
 			String un = (String) session.getAttribute("username");
 			String role = (String) session.getAttribute("role");
 
