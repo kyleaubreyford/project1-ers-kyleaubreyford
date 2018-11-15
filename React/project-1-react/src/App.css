@@ -4,17 +4,18 @@
   
 }
 .mainNav{
-  background-color:#6B4A9E;
+  background-color:rgba(63, 63, 63, .8);
 }
 
 .pendingStyle{
-  background-color: #6B4A9E  !important;
+  background-color: rgba(6, 2, 223, 0.3) !important;
+  
 }
 .approveStyle{
-  background-color: #6B4A9E  !important;
+  background-color: rgba(4, 65, 34, 0.8) !important;
 }
 .rejectStyle{
-  background-color: #6B4A9E  !important;
+  background-color:rgba(97, 3, 3, 0.8) !important;
 }
 
 
@@ -31,6 +32,27 @@
   font-weight: bold;
 }
 
+.signInBox{
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  width: 250px;
+  height: 300px;
+  position: relative;
+  top: 50px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.headerSignIn{
+  color:white !important;
+  font-size: 30px !important;
+}
+
+.btn-sign-in{
+  color:white !important;
+  font-size: 15px !important;
+
+}
+
 .welcomeDiv{
   font-size: 40px !important;
   color: #f3f3f3;
@@ -39,23 +61,35 @@
 }
 
 .tableStyle{
+  display: block;
+  height: 75vh !important; 
+  overflow-y: scroll;
+  max-width:100%;
   font-size: 15px !important;
-  background-color: #6B4A9E  !important;
-  width: 80vw !important;
-  margin:auto;
-  border-color: #6B4A9E;
   color:#f3f3f3;
-
+  background-color:rgba(63, 63, 63, .8) !important;
+  margin: auto !important;
+  overflow: auto;
  
-  
 }
+
+.tStyle{
+  width: 10000px !important;
+}
+
 .tableHeader{
-  background-color:  #6B4A9E !important;
+  background-color:  rgba(63, 63, 63, .8);
   color: #f3f3f3;
-  width: 80vw !important;
+  max-width: 80vw;
   margin:auto;
   font-size: 30px !important;
   text-align: center;
+  overflow: auto;
+}
+
+.flexSpaceAround{
+  display: flex !important;
+  justify-content: space-around!important;
 }
 
 
@@ -90,4 +124,24 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.scrollbar {
+  background-color:rgba(63, 63, 63, .8);
+  float: right;
+  height: 300px;
+  width: 65px;
+  overflow-y: scroll;
+  margin: auto;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color:rgba(63, 63, 63, .8);
+} 
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
 }

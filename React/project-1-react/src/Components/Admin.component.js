@@ -112,8 +112,8 @@ export class AdminComponent extends React.Component {
          <SignOffComponent history={this.props.history}/>
       </div >
       <div className ="tableHeader">Reimbursements
-        <table className="table table-striped tableStyle">
-          <thead>
+        <table className="table tableStyle scrollbar">
+          <thead >
             <tr>
               <th></th>
               <th>Id</th>
