@@ -16,7 +16,7 @@ export class HomeComponent extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/Project1/home', {
+    fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/home', {
       credentials: 'include'
     })
       .then(resp => resp.json())

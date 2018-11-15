@@ -17,7 +17,7 @@ export class AdminComponent extends React.Component {
 
   approve = (id) => {
     console.log(id);
-    fetch('http://localhost:8080/Project1/admin/approve', {
+    fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/admin/approve', {
       method: 'POST',
       body: JSON.stringify(id),
       headers: {
@@ -38,7 +38,7 @@ export class AdminComponent extends React.Component {
 
   reject = (id) => {
     console.log(id);
-    fetch('http://localhost:8080/Project1/admin/reject', {
+    fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/admin/reject', {
       method: 'POST',
       body: JSON.stringify(id),
       headers: {
@@ -83,7 +83,7 @@ export class AdminComponent extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/Project1/admin', {
+    fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/admin', {
       credentials: 'include'
     })
       .then(resp => resp.json())

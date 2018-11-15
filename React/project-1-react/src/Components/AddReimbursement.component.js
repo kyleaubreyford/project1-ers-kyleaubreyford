@@ -46,7 +46,7 @@ export class AddReimbursement extends React.Component {
     submit = (e) => {
         e.preventDefault();
         let reimbursementObject = this.state;
-        fetch('http://localhost:8080/Project1/home/createReimbursement', {
+        fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/home/createReimbursement', {
             credentials: 'include',
             method: 'POST',
             body: JSON.stringify(reimbursementObject),

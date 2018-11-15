@@ -15,7 +15,7 @@ export class SignOffComponent extends React.Component {
 
     signOff = (e) => {
         e.preventDefault();
-        fetch('http://localhost:8080/Project1/logout', {
+        fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/logout', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
