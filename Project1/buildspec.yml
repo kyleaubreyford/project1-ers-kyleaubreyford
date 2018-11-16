@@ -3,8 +3,8 @@ version: 0.2
 phases:
   post_build:
     commands:
-      - cd Project1/ && mvn clean package
+      - cd Project1 && mvn clean package
 artifacts:
   files:
-     - '**/*'
-     base-directory: 'Project1/target/Project1'
+    - '**/*'
+  base-directory: 'Project1/target/Project1'
