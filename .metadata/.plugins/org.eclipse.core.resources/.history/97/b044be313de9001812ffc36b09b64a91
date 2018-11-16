@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  post_build:
+    commands:
+      - cd Project1/ && mvn clean package
+artifacts:
+  files:
+    - '**/*'
+     base-directory: 'Project1/target/Project1'
+
+    
+    
+    
+version: 0.2
+
+phases:
+  post_build:
+    commands:
+      - cd week4/LeagueOfLegendsApi && mvn clean package
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'week4/LeagueOfLegendsApi/target/LeagueOfLegendsApi'
+    
