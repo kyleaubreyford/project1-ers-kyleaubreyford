@@ -6,4 +6,4 @@ phases:
       - cd Project1/ && mvn clean package
 artifacts:
   files:
-    - 'Project1/target/Project1.war'
+    - 'Project1/target/*.war'

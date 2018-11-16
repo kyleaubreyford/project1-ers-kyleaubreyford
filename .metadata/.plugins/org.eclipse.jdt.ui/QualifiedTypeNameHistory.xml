@@ -42,4 +42,5 @@
 <fullyQualifiedTypeName name="com.revature.utils.PasswordMD5Hash"/>
 <fullyQualifiedTypeName name="javax.swing.DebugGraphics"/>
 <fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
+<fullyQualifiedTypeName name="javax.sound.midi.MidiDevice.Info"/>
 </qualifiedTypeNameHistroy>
