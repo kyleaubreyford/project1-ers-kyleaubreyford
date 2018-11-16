@@ -47,7 +47,7 @@ export class AddReimbursement extends React.Component {
     submit = (e) => {
         e.preventDefault();
         let reimbursementObject = this.state;
-        Project1Client.post("admim/approve",reimbursementObject)
+        Project1Client.post("home/createReimbursement",reimbursementObject)     
             .then(res => {
                 console.log(res.status)
                 if (res.status === 201) {

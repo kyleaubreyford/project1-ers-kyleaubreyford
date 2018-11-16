@@ -1,5 +1,5 @@
 const dev = {
-    project1Context: "http://localhost:3000/Project1/"
+    project1Context: "http://localhost:8080/Project1/"
   };
   
   const prod = {

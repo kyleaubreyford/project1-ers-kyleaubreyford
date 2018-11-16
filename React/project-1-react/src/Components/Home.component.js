@@ -17,10 +17,11 @@ export class HomeComponent extends React.Component {
   }
 
   componentDidMount() {
-    Project1Client.get('Project1/home')
+    Project1Client.get('home')
       .then(data => {
+        console.log(data);
         this.setState({
-          reimbursements: data
+          reimbursements: data.data
         })
       }).catch(err => {
         console.log(err);

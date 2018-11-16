@@ -1,4 +1,5 @@
 import React from 'react';
+import Project1Client from '../AxiosClients/Project1Client';
 
 export class SignOffComponent extends React.Component {
 
@@ -15,13 +16,7 @@ export class SignOffComponent extends React.Component {
 
     signOff = (e) => {
         e.preventDefault();
-        fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/logout', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          credentials: 'include'
-        })
+        Project1Client.get("Logout")
           .then(res => {
             
               sessionStorage.clear();

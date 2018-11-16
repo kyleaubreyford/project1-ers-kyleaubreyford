@@ -29,15 +29,6 @@ public class ConnectionUtil {
 						+ dbSchema;
 				return DriverManager.getConnection(dataSource, username, password);
 			}
-			String url = System.getenv("db_url");
-			String port = System.getenv("db_port");
-			String dbName = System.getenv("db_name");
-			String dbSchema = System.getenv("db_schema");
-			String username = System.getenv("db_username");
-			String password = System.getenv("db_password");
-			String dataSource = "jdbc:postgresql://" + url + ":" + port + "/" + dbName + "?currentSchema=" + dbSchema;
-
-			return DriverManager.getConnection(dataSource, username, password);
 		} catch (NullPointerException e) {
 			String url = System.getenv("db_url");
 			String port = System.getenv("db_port");

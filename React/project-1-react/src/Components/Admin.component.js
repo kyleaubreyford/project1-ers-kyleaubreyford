@@ -22,7 +22,7 @@ export class AdminComponent extends React.Component {
       .then(data => {
         this.setState({
           ...this.state,
-          reimbursements: data
+          reimbursements: data.data
         })
       }).catch(err => {
         console.log(err);
@@ -35,7 +35,7 @@ export class AdminComponent extends React.Component {
       .then(data => {
         this.setState({
           ...this.state,
-          reimbursements: data
+          reimbursements: data.data
         })
       }).catch(err => {
         console.log(err);
@@ -68,11 +68,12 @@ export class AdminComponent extends React.Component {
   }
 
   componentDidMount() {
+    
     Project1Client.get("admin")
       .then(data => {
         this.setState({
           ...this.state,
-          reimbursements: data
+          reimbursements: data.data
         })
       }).catch(err => {
         console.log(err);
