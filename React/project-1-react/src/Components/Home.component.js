@@ -18,7 +18,6 @@ export class HomeComponent extends React.Component {
 
   componentDidMount() {
     Project1Client.get('Project1/home')
-      .then(resp => resp.json())
       .then(data => {
         this.setState({
           reimbursements: data

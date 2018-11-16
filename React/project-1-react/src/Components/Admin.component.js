@@ -18,8 +18,7 @@ export class AdminComponent extends React.Component {
 
   approve = (id) => {
     console.log(id);
-    Project1Client.post("admim/approve",id)
-      .then(resp => resp.json())
+    Project1Client.post("admin/approve",id)
       .then(data => {
         this.setState({
           ...this.state,
@@ -32,8 +31,7 @@ export class AdminComponent extends React.Component {
 
   reject = (id) => {
     console.log(id);
-    Project1Client.post("admim/reject",id)
-      .then(resp => resp.json())
+    Project1Client.post("admin/reject",id)
       .then(data => {
         this.setState({
           ...this.state,
@@ -71,7 +69,6 @@ export class AdminComponent extends React.Component {
 
   componentDidMount() {
     Project1Client.get("admin")
-      .then(resp => resp.json())
       .then(data => {
         this.setState({
           ...this.state,
