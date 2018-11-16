@@ -1,6 +1,7 @@
 import React from 'react';
 import { SignOffComponent } from './SignOff.component';
 import { AppNav } from './Nav.component';
+import Project1Client from '../AxiosClients/Project1Client';
 
 export class HomeComponent extends React.Component {
 
@@ -16,9 +17,7 @@ export class HomeComponent extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/home', {
-      credentials: 'include'
-    })
+    Project1Client.get('Project1/home')
       .then(resp => resp.json())
       .then(data => {
         this.setState({

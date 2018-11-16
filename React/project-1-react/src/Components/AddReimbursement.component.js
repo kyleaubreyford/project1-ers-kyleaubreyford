@@ -1,5 +1,6 @@
 import React from 'react';
 import { LocationButtonComponent } from './LocationButton.component';
+import Project1Client from '../AxiosClients/Project1Client';
 
 export class AddReimbursement extends React.Component {
     constructor(props) {
@@ -46,15 +47,7 @@ export class AddReimbursement extends React.Component {
     submit = (e) => {
         e.preventDefault();
         let reimbursementObject = this.state;
-        fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/home/createReimbursement', {
-            credentials: 'include',
-            method: 'POST',
-            body: JSON.stringify(reimbursementObject),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            
-        })
+        Project1Client.post("admim/approve",reimbursementObject)
             .then(res => {
                 console.log(res.status)
                 if (res.status === 201) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import Project1Client from '../AxiosClients/Project1Client';
 
 export class CreateUserComponent extends React.Component {
     constructor(props) {
@@ -56,15 +57,8 @@ export class CreateUserComponent extends React.Component {
     submit = (e) => {
         e.preventDefault();
         let cred = this.state;
-        fetch('http://project1kyle-env.99qncmeu49.us-east-2.elasticbeanstalk.com/Project1/welcome/create', {
-            method: 'POST',
-            body: JSON.stringify(cred),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'include'
-        })
-            .then(res => {
+        Project1Client.post("welcome/create",cred)
+        .then(res => {
                 if (res.status === 201) {
                     this.props.history.push('/welcome');
 

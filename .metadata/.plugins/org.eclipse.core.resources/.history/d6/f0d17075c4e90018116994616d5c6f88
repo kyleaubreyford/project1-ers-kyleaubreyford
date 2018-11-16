@@ -1,0 +1,62 @@
+package com.revature.utils;
+
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import com.amazonaws.AmazonServiceException;
+import com.amazonaws.SdkClientException;
+import com.amazonaws.auth.profile.ProfileCredentialsProvider;
+import com.amazonaws.services.mediastoredata.model.PutObjectResult;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.ObjectMetadata;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+
+public class uploadAmazonBucket {
+
+    public static void main(String[] args) throws IOException {
+        String clientRegion = "us-east-2";
+        String bucketName = "1810-project1receipt";
+        
+        //Change objectKey so it matches receipt
+        String stringObjKeyName = "stringObjKey2";
+        String fileObjKeyName = "fileObjKey2";
+        String fileName = "hi.jpg";
+
+        try {
+            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+                    .withRegion(clientRegion)
+                    .withCredentials(new ProfileCredentialsProvider())
+                    .build();
+        
+            String existingBucketName = "<your Bucket Name>";
+            String keyName = "mypic.JPG";
+            
+            String filePath = "E://Pics//mypic.JPG";
+            String amazonFileUploadLocationOriginal=existingBucketName+"/";
+            
+
+          
+            FileInputStream stream = new FileInputStream(filePath);
+            ObjectMetadata objectMetadata = new ObjectMetadata();
+            PutObjectRequest putObjectRequest = new PutObjectRequest(amazonFileUploadLocationOriginal, keyName, stream, objectMetadata);
+            com.amazonaws.services.s3.model.PutObjectResult result = s3Client.putObject(putObjectRequest);
+            System.out.println("Etag:" + result.getETag() + "-->" + result);
+           
+        }
+        catch(AmazonServiceException e) {
+            // The call was transmitted successfully, but Amazon S3 couldn't process 
+            // it, so it returned an error response.
+            e.printStackTrace();
+        }
+        catch(SdkClientException e) {
+            // Amazon S3 couldn't be contacted for a response, or the client
+            // couldn't parse the response from Amazon S3.
+            e.printStackTrace();
+        }
+        
+       // String generatedURL = "https://s3."+clientRegion+".amazonaws.com/"+bucketName+"/"+object.getKey();
+        //System.out.println(generatedURL);
+    }
+}

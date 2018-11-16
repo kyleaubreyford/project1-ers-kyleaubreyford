@@ -33,11 +33,11 @@
 }
 
 .signInBox{
-  background-color: rgba(0, 0, 0, 0.7) !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
   width: 250px;
   height: 300px;
   position: relative;
-  top: 50px;
+  top: 250px;
   margin: auto;
   border-radius: 10px;
 }

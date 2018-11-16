@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  post_build:
+    commands:
+      - cd Project1 && mvn clean package
+artifacts:
+  files:
+<<<<<<< HEAD
+     - '**/*'
+     base-directory: 'Project1/target/Project1'
+=======
+    - '**/*'
+  base-directory: 'Project1/target/Project1'
+>>>>>>> 4633318498769bde4ed74cbce24286d1eda7539f
