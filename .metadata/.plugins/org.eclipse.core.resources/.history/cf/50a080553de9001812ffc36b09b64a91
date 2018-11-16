@@ -6,5 +6,7 @@ phases:
       - cd Project1/ && mvn clean package
 artifacts:
   files:
-     - '**/*'
+    - '**/*'
      base-directory: 'Project1/target/Project1'
+
+   

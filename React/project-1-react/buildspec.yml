@@ -25,3 +25,4 @@ artifacts:
         - '**/*'
     base-directory: 'React/project-1-react/build*'
     discard-paths: yes
+

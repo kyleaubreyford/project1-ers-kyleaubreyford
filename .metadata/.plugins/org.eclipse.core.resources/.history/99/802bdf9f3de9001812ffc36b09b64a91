@@ -8,3 +8,7 @@ artifacts:
   files:
      - '**/*'
      base-directory: 'Project1/target/Project1'
+
+    
+    
+    

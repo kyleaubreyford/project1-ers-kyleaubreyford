@@ -72,9 +72,15 @@
   overflow: auto;
  
 }
-
-.tStyle{
-  width: 10000px !important;
+.tableHome{
+  height: 75vh !important; 
+  overflow-y: scroll;
+  max-width:100%;
+  font-size: 15px !important;
+  color:#f3f3f3;
+  background-color:rgba(63, 63, 63, .8) !important;
+  margin: auto !important;
+  overflow: auto;
 }
 
 .tableHeader{
@@ -130,10 +136,9 @@
   background-color:rgba(63, 63, 63, .8);
   float: right;
   height: 300px;
-  width: 65px;
   overflow-y: scroll;
   margin: auto;
-  
+
 }
 
 

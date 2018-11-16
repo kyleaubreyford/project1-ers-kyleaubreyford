@@ -47,7 +47,7 @@ export class HomeComponent extends React.Component {
             <SignOffComponent history={this.props.history} />
       </div >
        <div  className="tableHeader"> Available Reimbursement
-            <table className="table tableStyle" >
+            <table className="table tableHome scrollbar" >
   
               <thead>
                 <tr >
