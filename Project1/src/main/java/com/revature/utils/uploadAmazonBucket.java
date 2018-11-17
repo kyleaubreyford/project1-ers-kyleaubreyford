@@ -5,10 +5,11 @@ import java.io.IOException;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.revature.models.User;
 
 public class uploadAmazonBucket {
 
@@ -17,10 +18,26 @@ public class uploadAmazonBucket {
         	String bucketName = "1810-project1receipt/receipts/";
         	String keyname = key;
         try {
-            AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
+        	AmazonS3 s3Client;
+        	try {
+    			String property = System.getProperty("db_property");
+    			if (property.equals("property")) {
+    				s3Client = AmazonS3ClientBuilder.standard()
+    	                    .withRegion(clientRegion)
+    	                    .withCredentials(DefaultAWSCredentialsProviderChain.getInstance())
+    	                    .build();
+    			}else {
+    				s3Client = AmazonS3ClientBuilder.standard()
                     .withRegion(clientRegion)
                     .withCredentials(new ProfileCredentialsProvider())
                     .build();
+    			}
+        	}catch (NullPointerException e) {
+        		s3Client = AmazonS3ClientBuilder.standard()
+                        .withRegion(clientRegion)
+                        .withCredentials(new ProfileCredentialsProvider())
+                        .build();
+			}
          // Upload a text string as a new object.
             s3Client.putObject(bucketName, keyname, data);
             String generatedURL = "https://s3."+clientRegion+".amazonaws.com/"+bucketName+"/"+key;
