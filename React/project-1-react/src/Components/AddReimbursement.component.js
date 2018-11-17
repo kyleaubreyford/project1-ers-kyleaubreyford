@@ -9,7 +9,7 @@ export class AddReimbursement extends React.Component {
         this.state = {
             amount: 0,
             description: '',
-            receipt: '',
+            receipt: "empty",
             type: 'LODGING'
         }
     }
@@ -31,7 +31,7 @@ export class AddReimbursement extends React.Component {
     receiptChange = (e) => {
         this.setState({
             ...this.state,
-            receipt: e.target.value
+            receipt: e.target.result
         })
     }
 
@@ -42,7 +42,18 @@ export class AddReimbursement extends React.Component {
         })
     }
 
-
+   
+    handleFileChosen = (file) => {
+        let fileReader = new FileReader();
+        fileReader.onloadend = (file)=>{
+            let content =  btoa(fileReader.result);
+            this.setState({
+                ...this.state,
+                receipt:content
+            })
+        }
+        let a = fileReader.readAsBinaryString(file);
+    }
 
     submit = (e) => {
         e.preventDefault();
@@ -69,11 +80,13 @@ export class AddReimbursement extends React.Component {
     render() {
         return (
             <>
-                <form className="form-signin" onSubmit={this.submit}>
-                    <h1 className="h3 mb-3 font-weight-normal">Create a new Reimbursement</h1>
-
-                    <label>Description</label>
+            <div className = "text-center ">
+                <form className="form-signin createReimbursementBox" onSubmit={this.submit}>
+                    <div className ="formHeader">Create a new Reimbursement</div>
+                    <div className="formGroup formClass">
+                    <label className="labelClass">Description</label>
                     <input type="text"
+                        className="form-control"
                         id="input-description"
                         placeholder="Description"
                         required
@@ -81,46 +94,51 @@ export class AddReimbursement extends React.Component {
                         value={this.state.description}
                         onChange={this.descriptionChange}
                     />
-                    <label>Amount</label>
-                    <input type="number"
+                    </div>
+                    <div className="formGroup formClass">
+                    <label className="labelClass">Amount</label>
+                  <input type="number"
+                     className="form-control "
                         id="inputNumber"
                         placeholder="Password"
                         required
                         maxLength="20"
                         value={this.state.amount}
                         onChange={this.amountChange} />
-
-                    <label >Receipt</label>
-                    <input type="text"
-                        id="input-firstName"
-                        placeholder="Receipt"
-                        required
-                        maxLength="250"
-                        value={this.state.receipt}
-                        onChange={this.receiptChange}
+                   
+                    </div>
+                    
+                    <div className="formGroup formClass">
+                    <label className="labelClass">Receipt</label>
+                    <input type="file"
+                     className="white"
+                        id="file"
+                        onChange={e => this.handleFileChosen(e.target.files[0])}
                     />
-
-                    <label>Type: </label>
-                    <select name="Types" onChange={this.typeChange}>
+                    </div>
+                    <img src = {'data:image/;base64,'+this.state.receipt} className="imageSpacing"alt="" width="200"height="200"/>
+                    <div className="formGroup formClass">
+                    <label className="labelClass">Type: </label>
+                    <select name="Types" onChange={this.typeChange}
+                     className="form-control">
                         <option value="LODGING"> LODGING</option>
                         <option value="TRAVEL">TRAVEL</option>
                         <option value="FOOD">FOOD</option>
                         <option value="OTHER">OTHER</option>
                     </select>
-
-                    <button className="btn btn-md btn-dark"
+                    </div>
+                    <div className="buttonMargin">
+                    <button className="btn btn-primary  btn-lg active btnStyle buttonMarginRight"
                         type="submit">
                         Create Reimbursement
                 </button>
+                <LocationButtonComponent history={this.props.history} name={this.props.name} redirectURL={this.props.redirectURL}/>
+                </div>
                 </form>
 
 
-                <LocationButtonComponent history={this.props.history} name={this.props.name} redirectURL={this.props.redirectURL}/>
-                {/* <button className="btn btn-md btn-dark"
-                    type="submit"
-                    onClick={this.returnHome}>
-                    Return to Home Page
-                 </button> */}
+    
+                </div>
             </>
 
         )

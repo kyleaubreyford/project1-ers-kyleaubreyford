@@ -17,9 +17,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dto.ReimbursementBasics;
 import com.revature.dto.ReimbursementTable;
 import com.revature.models.Reimbursement;
+import com.revature.models.User;
 import com.revature.services.ReimbursementService;
 import com.revature.services.UserService;
 import com.revature.utils.ResponseMapper;
+import com.revature.utils.uploadAmazonBucket;
 
 public class ReimbursementController {
 	private Logger log = Logger.getRootLogger();
@@ -84,7 +86,16 @@ public class ReimbursementController {
 		if ("home/createReimbursement".equals(uri)) {
 			
 			ReimbursementBasics reimbursementB = om.readValue(req.getReader(), ReimbursementBasics.class);
-			Reimbursement r = new Reimbursement(reimbursementB, us.findByUsername(un).getId());
+			User user = us.findByUsername(un);
+			Reimbursement r;
+			if (!reimbursementB.getReceipt().equals("empty")){
+				String key = user.getFirstName()+"_"+user.getLastName()+"_"+reimbursementB.getReceipt().substring(0,10)+((int)Math.random()
+				*10);
+				reimbursementB.setReceipt(uploadAmazonBucket.uploadIntoBucket(reimbursementB.getReceipt(), key));
+			}else {
+			 reimbursementB.setReceipt("");
+			}
+			 r = new Reimbursement(reimbursementB,  user.getId() );
 			if (rs.saveReimbursement(r)) {
 				resp.setStatus(201);
 				return;

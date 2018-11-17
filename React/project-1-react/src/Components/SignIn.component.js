@@ -28,19 +28,18 @@ export class SignInComponent extends React.Component {
   submit = (e) => {
     e.preventDefault();
     let cred = this.state;
-    Project1Client.post('welcome/login',cred)
+    Project1Client.post('welcome/login', cred)
       .then(res => {
-        if (res.status === 210) {
-          console.log(res);
-          sessionStorage.setItem("username", this.state.username);
-          this.props.history.push('/admin');
-
-        } else if (res.status === 211) {
-          console.log(res);
-          sessionStorage.setItem("username", this.state.username);
-          this.props.history.push('/home');
-
+        console.log(res);
+        if (res.data.roleId.userRole === "admin") {
+           
+            this.props.history.push('/admin');
+        } else if (res.data.roleId.userRole === "employee") {
+            this.props.history.push('/home');
+        }else{
+          console.log("not suitable role");
         }
+        sessionStorage.setItem("username", res.data.firstName);
       })
       .catch(err => {
         console.log(err);
@@ -65,7 +64,7 @@ export class SignInComponent extends React.Component {
               id="input-username"
               placeholder="Username"
               required
-              className="form-control"
+              className="form-control formClass"
               autoFocus
               value={this.state.username}
               onChange={this.usernameChange}
@@ -76,19 +75,19 @@ export class SignInComponent extends React.Component {
               id="inputPassword"
               placeholder="Password"
               required
-              className="form-control"
+              className="form-control formClass"
               value={this.state.password}
               onChange={this.passwordChange} />
-              <div className = "flexSpaceAround">
-            <button className="btn btn-dark btn-sign-in"
-              type="submit">
-              Sign in
+            <div className="flexSpaceAround">
+              <button className="btn btn-dark btn-sign-in"
+                type="submit">
+                Sign in
             </button>
-            <button className="btn btn-dark btn-sign-in"
-              onClick={this.createButton}>
-              Create Account
+              <button className="btn btn-dark btn-sign-in"
+                onClick={this.createButton}>
+                Create Account
            </button>
-           </div>
+            </div>
           </form>
         </div>
       </>

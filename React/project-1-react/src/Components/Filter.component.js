@@ -4,7 +4,7 @@ export class FilterComponent extends React.Component {
 
     render() {
         return(
-        <button className="btn btn-dark btnStyle"
+        <button className="btn btn-primary  btn-lg active btnStyle"
             value={this.props.value}
             onClick={this.props.updateFilter}
             type='submit'>

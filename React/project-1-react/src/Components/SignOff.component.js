@@ -5,7 +5,7 @@ export class SignOffComponent extends React.Component {
 
     render() {
         return(
-        <button className="btn btnStyle btn-dark"
+        <button className="btn btn-primary  btn-lg active btnStyle"
             onClick={this.signOff}
             type='submit'>
             Sign Off

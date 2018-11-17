@@ -2,6 +2,7 @@ import React from 'react';
 import { SignOffComponent } from './SignOff.component';
 import { AppNav } from './Nav.component';
 import Project1Client from '../AxiosClients/Project1Client';
+import { ReimbursementComponent } from './Reimbursement.component';
 
 export class HomeComponent extends React.Component {
 
@@ -45,11 +46,12 @@ export class HomeComponent extends React.Component {
         
             <SignOffComponent history={this.props.history} />
       </div >
-       <div  className="tableHeader"> Available Reimbursement
-            <table className="table tableHome scrollbar" >
+       <div  className="flexName">
+            <table className="table-responsive-lg table table-lg table-dark table-trial" >
   
               <thead>
                 <tr >
+                  <th></th>
                   <th>Id</th>
                   <th>Amount</th>
                   <th>Description</th>
@@ -64,17 +66,7 @@ export class HomeComponent extends React.Component {
               <tbody>
                 {
                   this.state.reimbursements.map(r =>
-                    <tr key={r.id}>
-                      <td>{r.id}</td>
-                      <td>{r.amount}</td>
-                      <td>{r.description}</td>
-                      <td>{r.type}</td>
-                      <td>{r.submitted}</td>
-                      <td>{r.receipt}</td>
-                      <td>{r.status}</td>
-                      <td>{r.resolverusername}</td>
-                      <td>{r.resolved}</td>
-                    </tr>
+                    <ReimbursementComponent key={r.id} reimbursement={r} render={false}/>
                   )
                 }
               </tbody>

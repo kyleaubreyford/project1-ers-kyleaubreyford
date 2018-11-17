@@ -1,43 +1,31 @@
 package com.revature.utils;
 
 
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
 import com.amazonaws.auth.profile.ProfileCredentialsProvider;
-import com.amazonaws.services.mediastoredata.model.PutObjectResult;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.revature.models.User;
 
 public class uploadAmazonBucket {
 
-    public static void main(String[] args) throws IOException {
-        String clientRegion = "us-east-2";
-
-
+    public static String uploadIntoBucket(String data, String key) throws IOException {
+        	String clientRegion = "us-east-2";
+        	String bucketName = "1810-project1receipt/receipts/";
+        	String keyname = key;
         try {
             AmazonS3 s3Client = AmazonS3ClientBuilder.standard()
                     .withRegion(clientRegion)
                     .withCredentials(new ProfileCredentialsProvider())
                     .build();
-        
-            String existingBucketName = "1810-project1receipt";
-            String keyName = "mypic2.JPG";
-            
-            String filePath = "hi.jpg";
-            String amazonFileUploadLocationOriginal=existingBucketName+"/";
-            
-
-          
-            FileInputStream stream = new FileInputStream(filePath);
-            ObjectMetadata objectMetadata = new ObjectMetadata();
-            PutObjectRequest putObjectRequest = new PutObjectRequest(amazonFileUploadLocationOriginal, keyName, stream, objectMetadata);
-            com.amazonaws.services.s3.model.PutObjectResult result = s3Client.putObject(putObjectRequest);
-            System.out.println("Etag:" + result.getETag() + "-->" + result);
+         // Upload a text string as a new object.
+            s3Client.putObject(bucketName, keyname, data);
+            String generatedURL = "https://s3."+clientRegion+".amazonaws.com/"+bucketName+"/"+key;
+            System.out.println(generatedURL);
+            return generatedURL;
            
         }
         catch(AmazonServiceException e) {
@@ -50,6 +38,7 @@ public class uploadAmazonBucket {
             // couldn't parse the response from Amazon S3.
             e.printStackTrace();
         }
+        return "";
         
        // String generatedURL = "https://s3."+clientRegion+".amazonaws.com/"+bucketName+"/"+object.getKey();
         //System.out.println(generatedURL);

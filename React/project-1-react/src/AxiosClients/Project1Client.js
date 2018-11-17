@@ -8,4 +8,11 @@ const Project1Client = axios.create({
   withCredentials: true
 });
 
+export const AWSClientBlank = axios.create({
+    baseURL: "",
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
 export default Project1Client;

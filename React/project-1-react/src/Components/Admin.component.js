@@ -52,15 +52,15 @@ export class AdminComponent extends React.Component {
   filterReimbursements() {
     if (this.state.filter === 'All') {
       return this.state.reimbursements.map(r =>
-        <ReimbursementComponent key={r.id} reimbursement={r} approve={this.approve.bind(this)} reject={this.reject.bind(this)} />
+        <ReimbursementComponent key={r.id} reimbursement={r} approve={this.approve.bind(this)} reject={this.reject.bind(this)} render={true}/>
       )
     } else if (this.state.filter === 'Pending') {
       return this.state.reimbursements.filter(word => word.status === 'pending').map(r =>
-        <ReimbursementComponent key={r.id} reimbursement={r} approve={this.approve.bind(this)} reject={this.reject.bind(this)} />
+        <ReimbursementComponent key={r.id} reimbursement={r} approve={this.approve.bind(this)} reject={this.reject.bind(this)} render={true}/>
       )
     } else if (this.state.filter === 'Completed') {
       return this.state.reimbursements.filter(word => word.status !== 'pending').map(r =>
-        <ReimbursementComponent key={r.id} reimbursement={r} approve={this.approve.bind(this)} reject={this.reject.bind(this)} />
+        <ReimbursementComponent key={r.id} reimbursement={r} approve={this.approve.bind(this)} reject={this.reject.bind(this)} render={true} />
       )
     } else {
       console.log("No filter status found.")
@@ -94,8 +94,9 @@ export class AdminComponent extends React.Component {
          <FilterComponent key={'Pending'} value={'Pending'} updateFilter={this.updateFilter.bind(this)}/>
          <SignOffComponent history={this.props.history}/>
       </div >
-      <div className ="tableHeader">Reimbursements
-        <table className="table tableStyle scrollbar">
+      <div className="flexName"> 
+        <table className="table-responsive-sm table table-sm table-dark table-trial">
+        
           <thead >
             <tr>
               <th></th>
@@ -121,7 +122,7 @@ export class AdminComponent extends React.Component {
             }
           </tbody>
         </table>
-        </div>
+      </div>
       </>
     )
   }
