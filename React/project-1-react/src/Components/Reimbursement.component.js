@@ -36,7 +36,7 @@ export class ReimbursementComponent extends React.PureComponent {
         </td>
         <td>{this.props.reimbursement.id}</td>
         {this.props.render ?<td>{this.props.reimbursement.authorusername}</td>:null}
-        <td>{this.props.reimbursement.amount}</td>
+        <td>${this.props.reimbursement.amount}</td>
         <td>{this.props.reimbursement.description}</td>
         <td>{this.props.reimbursement.type}</td>
         <td>{this.props.reimbursement.submitted}</td>

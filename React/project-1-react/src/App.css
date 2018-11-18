@@ -1,7 +1,10 @@
 #main-content-container{
-  background-image: url(https://i.pinimg.com/originals/3e/d7/75/3ed7758e641f0aff4b96c44330251ed8.jpg);
-  min-height: 100vh;
+  background-image: url(Images/Background.jpg);
   background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
   
 }
 .mainNav{
@@ -22,6 +25,16 @@
   background-color:rgba(97, 3, 3, 0.8) !important;
 }
 
+.imageActive{
+    width: 300px;
+    height: 500px;
+    left:40vw;
+    top: 30vh;
+    position: absolute;
+    border: black 2px solid;
+    border-radius: 10px;
+
+}
 
 .flexBoxNav{
   display: flex !important;
@@ -36,8 +49,8 @@
 
 .signInBox{
   background-color: rgba(0, 0, 0, 0.9) !important;
-  width: 250px;
-  height: 200px;
+  width: 450px;
+  height: 265px;
   position: relative;
   top: 250px;
   margin: auto;
@@ -56,12 +69,14 @@
 }
 .headerSignIn{
   color:white !important;
-  font-size: 30px !important;
+  font-size: 45px !important;
 }
 
 .btn-sign-in{
   color:white !important;
-  font-size: 15px !important;
+  font-size: 25px !important;
+  border: 1px solid white !important;
+  background-color: transparent !important;
 
 }
 
@@ -72,7 +87,7 @@
   font-weight: bold;
 }
 .flexName{
-  displa-y:flex
+  display:flex
 }
 .tableStyle{
   height: 80vh !important; 
@@ -88,7 +103,9 @@
 
 .formClass{
   width: 80% !important;
+  margin-top: 10px !important;
   margin: auto;
+  font-size: 20px !important;
 }
 
 .table-trial{
@@ -134,6 +151,7 @@
   color: #f3f3f3 !important;
   font-size: 25px;
   font-weight: bold;
+  margin-bottom: 20px !important;
 }
 
 .labelClass{
@@ -148,7 +166,7 @@
 
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width:6px;
   background-color:rgba(0, 0, 0, 0.8);
 } 
 

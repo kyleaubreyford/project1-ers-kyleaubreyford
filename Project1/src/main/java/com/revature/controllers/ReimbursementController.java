@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.io.Console;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -89,8 +90,7 @@ public class ReimbursementController {
 			User user = us.findByUsername(un);
 			Reimbursement r;
 			if (!reimbursementB.getReceipt().equals("empty")){
-				String key = user.getFirstName()+"_"+user.getLastName()+"_"+reimbursementB.getReceipt().substring(0,10)+((int)Math.random()
-				*10);
+				String key = user.getFirstName()+"_"+user.getLastName()+"_"+reimbursementB.getReceipt().substring(0,10)+new String(""+System.currentTimeMillis());
 				reimbursementB.setReceipt(uploadAmazonBucket.uploadIntoBucket(reimbursementB.getReceipt(), key));
 			}else {
 			 reimbursementB.setReceipt("");

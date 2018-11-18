@@ -6,13 +6,12 @@ export class ImageComponent extends React.Component {
         super(props);
         this.state = {
           flag: false,
-          clicked: false,
+          clicked: 1,
           image: ""
         }
       }
 
     componentDidMount(){
-        console.log(this.state.image);
         AWSClientBlank.get(this.props.receipt)
         .then(data => {
           this.setState({
@@ -20,7 +19,6 @@ export class ImageComponent extends React.Component {
             image: data.data,
             flag: true
           })
-          console.log(this.state.image);
         }).catch(err => {
           console.log(err);
         });
@@ -30,17 +28,28 @@ export class ImageComponent extends React.Component {
 
 
     viewImage = () => {
+        let temp;
+        if (this.state.clicked < 3){
+            temp = this.state.clicked + 1;
+        }else{
+          temp = 1
+        }
         this.setState({
             ...this.state,
-            clicked: !this.state.clicked
+            clicked: temp
           })
-          console.log(this.state.clicked);
+        console.log(this.state.clicked)
     }
 
     render() {
         return(
-            this.state.flag ? this.state.clicked ? <img src = {'data:image/;base64,'+this.state.image} alt="" width="100"height="100" onClick={this.viewImage}/> 
-                : <p onClick={this.viewImage.bind(this)}>View Receipt</p> :""
+            this.state.flag ? 
+              this.state.clicked > 1 ?
+                this.state.clicked === 2 ?
+                  <img src = {'data:image/;base64,'+this.state.image} alt="" width="100"height="100" onClick={this.viewImage}/> 
+                :<img src = {'data:image/;base64,'+this.state.image} alt="" className="imageActive"onClick={this.viewImage}/> 
+              : <p onClick={this.viewImage.bind(this)}>View Receipt</p> 
+            :""
         )
     }
 

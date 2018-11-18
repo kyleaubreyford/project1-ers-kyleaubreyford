@@ -3,7 +3,6 @@ import { ReimbursementComponent } from './Reimbursement.component';
 import { FilterComponent } from './Filter.component';
 import { SignOffComponent } from './SignOff.component';
 import { LocationButtonComponent } from './LocationButton.component';
-import { AppNav } from './Nav.component';
 import Project1Client from '../AxiosClients/Project1Client';
 
 export class AdminComponent extends React.Component {

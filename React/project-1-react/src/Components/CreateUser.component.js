@@ -78,10 +78,11 @@ export class CreateUserComponent extends React.Component {
     render() {
         return (
             <>
-                <form className="form-signin" onSubmit={this.submit}>
-                    <h1 className="h3 mb-3 font-weight-normal">Create an Account</h1>
-
-                    <label htmlFor="input-username" className="sr-only">Username</label>
+              <div className = "text-center ">
+                <form className="form-signin createReimbursementBox" onSubmit={this.submit}>
+                    <h1 className="formHeader">Create an Account</h1>
+                    <div className="formGroup formClass">
+                    <label htmlFor="input-username" className="labelClass">Username</label>
                     <input type="text"
                         id="input-username"
                         className="form-control"
@@ -91,7 +92,9 @@ export class CreateUserComponent extends React.Component {
                         value={this.state.username}
                         onChange={this.usernameChange}
                     />
-                    <label htmlFor="inputPassword" className="sr-only">Password</label>
+                    </div>
+                    <div className="formGroup formClass">
+                    <label htmlFor="inputPassword" className="labelClass">Password</label>
                     <input type="password"
                         id="inputPassword"
                         className="form-control"
@@ -100,8 +103,9 @@ export class CreateUserComponent extends React.Component {
                         maxLength="50"
                         value={this.state.password}
                         onChange={this.passwordChange} />
-
-                    <label htmlFor="input-firstName" className="sr-only">First Name</label>
+                    </div>
+                    <div className="formGroup formClass">
+                    <label htmlFor="input-firstName" className="labelClass">First Name</label>
                     <input type="text"
                         id="input-firstName"
                         className="form-control"
@@ -111,8 +115,10 @@ export class CreateUserComponent extends React.Component {
                         value={this.state.firstname}
                         onChange={this.firstnameChange}
                     />
+                    </div>
 
-                    <label htmlFor="input-lastName" className="sr-only">Last Name</label>
+                      <div className="formGroup formClass">
+                    <label htmlFor="input-lastName" className="labelClass">Last Name</label>
                     <input type="text"
                         id="input-lastName"
                         className="form-control"
@@ -122,31 +128,36 @@ export class CreateUserComponent extends React.Component {
                         value={this.state.lastname}
                         onChange={this.lastnameChange}
                     />
+                    </div>
 
-                    <label htmlFor="input-email" className="sr-only">Email</label>
+                      <div className="formGroup formClass">
+                    <label htmlFor="input-email" className="labelClass">Email</label>
                     <input type="email"
                         id="input-email"
                         className="form-control"
-                        placeholder="Email"
+                        placeholder="Email@host.com"
                         required
                         maxLength="150"
                         value={this.state.email}
                         onChange={this.emailChange}
                     />
-
-
-                    <button className="btn btn-lg btn-primary btn-block"
+                    </div>
+                    <div className="buttonMargin">
+                    <button className="btn btn-primary  btn-lg active btnStyle buttonMarginRight"
                         type="submit">
                         Create Account
-        </button>
+                    </button>
+
+                    
+                     <button className="btn btn-primary  btn-lg active btnStyle buttonMarginRight"
+                          type="submit"
+                          onClick={this.returnWelcome}>
+                          Return to Welcome Page
+                     </button>
+                     </div>
                 </form>
 
-
-                <button className="btn btn-lg btn-primary btn-block"
-                    type="submit"
-                    onClick={this.returnWelcome}>
-                    Return to Welcome Page
-                 </button>
+                 </div>
             </>
 
         )

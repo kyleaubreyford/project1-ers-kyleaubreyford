@@ -52,7 +52,7 @@ export class AddReimbursement extends React.Component {
                 receipt:content
             })
         }
-        let a = fileReader.readAsBinaryString(file);
+        fileReader.readAsBinaryString(file);
     }
 
     submit = (e) => {
@@ -103,6 +103,7 @@ export class AddReimbursement extends React.Component {
                         placeholder="Password"
                         required
                         maxLength="20"
+                        min="0"
                         value={this.state.amount}
                         onChange={this.amountChange} />
                    
@@ -128,12 +129,12 @@ export class AddReimbursement extends React.Component {
                     </select>
                     </div>
                     <div className="buttonMargin">
-                    <button className="btn btn-primary  btn-lg active btnStyle buttonMarginRight"
-                        type="submit">
-                        Create Reimbursement
-                </button>
-                <LocationButtonComponent history={this.props.history} name={this.props.name} redirectURL={this.props.redirectURL}/>
-                </div>
+                         <button className="btn btn-primary  btn-lg active btnStyle buttonMarginRight"
+                            type="submit">
+                            Create Reimbursement
+                        </button>
+                        <LocationButtonComponent history={this.props.history} name={this.props.name} redirectURL={this.props.redirectURL}/>
+                    </div>
                 </form>
 
 
